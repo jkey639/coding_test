@@ -29,4 +29,29 @@ class Solution {
 
         return root == null ? nDepth : Math.max(recur(root.left, nDepth + 1), recur(root.right, nDepth + 1));
     }
+
+    // 추가 문제 풀이 연습
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+
+        // true example
+        // TreeNode p = new TreeNode(1);
+        // p.left = new TreeNode(2);
+        // p.right = new TreeNode(3);
+        // TreeNode q = new TreeNode(1);
+        // q.left = new TreeNode(2);
+        // q.right = new TreeNode(3);
+
+        // false example
+        // TreeNode p = new TreeNode(1);
+        // p.left = new TreeNode(2);
+        // TreeNode q = new TreeNode(1);
+        // q.right = new TreeNode(2);
+
+        // 풀이
+        // p.val int vs q.val int
+        // p.left = TreeNode vs q.left = TreeNode
+        // p.right = TreeNode vs q.right = TreeNode
+        // parameter로 받은 TreeNode를 left, right가 null 값을 반환할 때까지 재귀 수행
+        return false;
+    }
 }
