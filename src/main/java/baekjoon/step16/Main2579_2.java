@@ -25,22 +25,27 @@ public class Main2579_2 {
         }
         dp[0] = score[0] = 0;
         dp[1] = score[1];
+        // 2번째 계단을 먼저 초기화하는게 맞는가?
+        // 0 1 2 4
+        // 0 2 3
+        // 0 2 4
+        dp[2] = score[1] + score[2];
 
         System.out.println(recur(nCnt));
     }
 
     private static int recur(int nCnt) {
 
-        if (nCnt == 2) {
-
-            if (dp[3] == null) {
-
-                dp[2] = score[1] + score[2];
-            } else {
-
-                dp[2] = score[2];
-            }
-        }
+//        if (nCnt == 2) {
+//
+//            if (dp[3] == null) {
+//
+//                dp[2] = score[1] + score[2];
+//            } else {
+//
+//                dp[2] = score[2];
+//            }
+//        }
 
         if (dp[nCnt] == null) {
             // 값이 동적 할당되지 않은 경우에만 실행
