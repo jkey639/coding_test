@@ -5,7 +5,7 @@ public class Solution91_2 {
     public static void main(String[] args) {
 
         Solution91_2_submit s = new Solution91_2_submit();
-        System.out.println(s.numDecodings("2101"));
+        System.out.println(s.numDecodings("110"));
     }
 }
 
@@ -29,7 +29,6 @@ class Solution91_2_submit {
         int nLen = s.length();
         dp = new Integer[nLen + 1];
         dp[0] = 1; // 함수 내에서 붙일 수 있는 문자 조건을 구분하므로 empty string에 붙이는 경우는 무조건 가능하다.
-        dp[1] = s.startsWith("0") ? 0 : 1;
         // 두 글자를 자르는 경우의 수가 곧 붙이는 두 글자의 경우의 수와 같으므로 함수로 구현 >> recur()
 
         return recur(s, nLen);
@@ -43,11 +42,21 @@ class Solution91_2_submit {
         // 00 ~ 09 : 한 글자, 두 글자 모두 불가능
         // 10 ~ 26 : 한 글자, 두 글자 모두 가능(10, 20은 한 글자 불가능)
         // 26 ~ 99 : 한 글자만 가능(30, 40, 50, ..., 90은 모두 불가능)
+
+        // 0으로 시작하거나 00이 포함되어 있으면 불가능
+        if (s.startsWith("0") || s.contains("00")) {
+
+            dp[nLen] = 0;
+        }
+
         if (dp[nLen] == null) {
 
-            String strMol = s.substring(0, nLen - 1);
-            String strMtl = s.substring(0, nLen - 2);
-            String strTl = s.substring(nLen - 2);
+//            String strMol = s.substring(0, nLen - 1);
+//            String strMtl = s.substring(0, nLen - 2);
+//            String strTl = s.substring(nLen - 2);
+            String strMol = s.substring(1);
+            String strMtl = s.substring(2);
+            String strTl = s.substring(0, 2);
 //            System.out.println(strMol);
 //            System.out.println(strMtl);
 //            System.out.println(strTl);
@@ -78,8 +87,9 @@ class Solution91_2_submit {
             }
         }
 
-        System.out.println("nLen : " + nLen);
-        System.out.println("dp[nLen] : " + dp[nLen]);
+//        System.out.println("s : " + s);
+//        System.out.println("nLen : " + nLen);
+//        System.out.println("dp[nLen] : " + dp[nLen]);
         return dp[nLen];
     }
 }
