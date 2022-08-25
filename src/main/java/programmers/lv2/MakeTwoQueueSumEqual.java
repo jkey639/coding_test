@@ -45,10 +45,6 @@ class Solution {
 
             while (true) {
 
-                if (n1Sum == n2Sum) {
-                    break;
-                }
-
                 while (n1Sum < n2Sum) {
 
                     int n2Poll = q2.poll();
@@ -65,7 +61,12 @@ class Solution {
                     n2Sum += n1Poll;
                 }
 
-                if (q1.equals(q1_ori) && q2.equals(q2_ori)) {
+                if (n1Sum == n2Sum) {
+                    break;
+                }
+
+                // q1과 q2 요소가 교환되므로 q1은 q2_ori와 q2는 q1_ori와 비교해야 한다.
+                if (q1.equals(q2_ori) && q2.equals(q1_ori)) {
                     break;
                 }
             }
