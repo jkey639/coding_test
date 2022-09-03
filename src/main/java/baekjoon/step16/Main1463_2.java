@@ -36,7 +36,9 @@ public class Main1463_2 {
 
     private static int recur(int nInput) {
 
-        if (nInput > 1) {
+//        if (nInput > 1) {
+        // 동적계획법 변수를 초기화한 지점까지 재귀함수를 마쳤을 경우
+        if (nResult[nInput - 1] != null) {
             if (nInput % 6 == 0) {
                 nResult[nInput - 1] = Math.min(Math.min(recur(nInput / 3), recur(nInput / 2)), recur(nInput - 1)) + 1;
             } else if (nInput % 3 == 0) {
