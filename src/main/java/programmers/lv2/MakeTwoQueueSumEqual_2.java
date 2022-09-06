@@ -63,14 +63,23 @@ class Solution_2 {
 
             if (n1Sum > n2Sum) {
 
-
+                int n1Poll = q1.poll();
+                n1Sum -= n1Poll;
+                q2.add(n1Poll);
+                n2Sum += n1Poll;
+                answer++;
             } else if (n1Sum == n2Sum) {
 
                 break;
             } else {
 
+                int n2Poll = q2.poll();
+                n2Sum -= n2Poll;
+                q1.add(n2Poll);
+                n1Sum += n2Poll;
+                answer++;
             }
-            
+
             // 이전 로직
             while (n1Sum < n2Sum) {
 
